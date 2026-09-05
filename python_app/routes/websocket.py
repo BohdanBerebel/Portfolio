@@ -4,6 +4,7 @@ from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from auth.jwt import validate_token
 from repositories.conversation import ConversationRepository
 from repositories.message import MessageRepository
+from repositories.user import UserRepository
 from services.chat import ChatService
 from websocket.manager import ConnectionManager
 
@@ -37,6 +38,7 @@ async def websocket_endpoint(
     chat_service = ChatService(
         conversation_repository=ConversationRepository(db),
         message_repository=MessageRepository(db),
+        user_repository=UserRepository(db),
     )
 
     conversation = await chat_service.get_conversation(
