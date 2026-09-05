@@ -1,0 +1,61 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Go
+go_app/bin/
+go_app/vendor/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+go.work
+go.work.sum
+
+# Python
+python_app/.venv/
+python_app/venv/
+python_app/env/
+python_app/__pycache__/
+python_app/**/__pycache__/
+python_app/.pytest_cache/
+python_app/.ruff_cache/
+python_app/.mypy_cache/
+python_app/.coverage
+python_app/coverage/
+python_app/build/
+python_app/dist/
+python_app/*.egg-info/
+*.py[cod]
+*.pyo
+
+# Node
+ts_app/node_modules/
+ts_app/dist/
+ts_app/dist-ssr/
+ts_app/.vite/
+ts_app/coverage/
+ts_app/*.tsbuildinfo
+ts_app/vite.config.*.timestamp-*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
