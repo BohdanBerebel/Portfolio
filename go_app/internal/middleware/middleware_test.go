@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/BohdanBerebel/go_app/internal/auth"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/auth"
 )
 
 func setupAuthRouter(jwtSecret string) *gin.Engine {

@@ -1,4 +1,4 @@
-module github.com/BohdanBerebel/go_app
+module github.com/BohdanBerebel/Portfolio/go_app
 
 go 1.25.0
 

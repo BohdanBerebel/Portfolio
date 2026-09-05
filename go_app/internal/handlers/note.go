@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/BohdanBerebel/go_app/internal/models"
-	"github.com/BohdanBerebel/go_app/pkg/response"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/models"
+	"github.com/BohdanBerebel/Portfolio/go_app/pkg/response"
 	"github.com/gin-gonic/gin"
 )
 

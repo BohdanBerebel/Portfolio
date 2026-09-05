@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/BohdanBerebel/go_app/internal/auth"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/auth"
 )
 
 func AuthMiddleware(jwtSecret string) gin.HandlerFunc {

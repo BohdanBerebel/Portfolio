@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/BohdanBerebel/go_app/internal/models"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/models"
 )
 
 type NoteService struct {

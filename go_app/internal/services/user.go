@@ -3,9 +3,9 @@ package services
 import (
 	"context"
 
-	"github.com/BohdanBerebel/go_app/internal/auth"
-	apperrors "github.com/BohdanBerebel/go_app/internal/errors"
-	"github.com/BohdanBerebel/go_app/internal/models"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/auth"
+	apperrors "github.com/BohdanBerebel/Portfolio/go_app/internal/errors"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/models"
 )
 
 type UserService struct {

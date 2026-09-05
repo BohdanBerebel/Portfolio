@@ -9,12 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/BohdanBerebel/go_app/internal/config"
-	"github.com/BohdanBerebel/go_app/internal/database"
-	"github.com/BohdanBerebel/go_app/internal/handlers"
-	middlewares "github.com/BohdanBerebel/go_app/internal/middleware"
-	"github.com/BohdanBerebel/go_app/internal/repositories"
-	"github.com/BohdanBerebel/go_app/internal/services"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/config"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/database"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/handlers"
+	middlewares "github.com/BohdanBerebel/Portfolio/go_app/internal/middleware"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/repositories"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/services"
 
 	"github.com/gin-gonic/gin"
 )

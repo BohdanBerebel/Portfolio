@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/BohdanBerebel/go_app/internal/services"
-	"github.com/BohdanBerebel/go_app/pkg/response"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/services"
+	"github.com/BohdanBerebel/Portfolio/go_app/pkg/response"
 )
 
 type RegisterRequest struct {

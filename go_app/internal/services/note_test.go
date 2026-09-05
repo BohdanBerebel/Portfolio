@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	apperrors "github.com/BohdanBerebel/go_app/internal/errors"
-	"github.com/BohdanBerebel/go_app/internal/models"
+	apperrors "github.com/BohdanBerebel/Portfolio/go_app/internal/errors"
+	"github.com/BohdanBerebel/Portfolio/go_app/internal/models"
 )
 
 type fakeNoteRepository struct {
