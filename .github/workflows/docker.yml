@@ -76,7 +76,7 @@ jobs:
           COMMAND_ID=$(aws ssm send-command \
             --instance-ids i-07930c2d38f91cf0d \
             --document-name "AWS-RunShellScript" \
-            --parameters 'commands=["cd /opt/portfolio && git pull origin main && /opt/portfolio/scripts/deploy.sh"]' \
+            --parameters 'commands=["cd /opt/portfolio && sudo -u ec2-user git pull origin main && /opt/portfolio/scripts/deploy.sh"]' \
             --query "Command.CommandId" \
             --output text)
 
