@@ -31,13 +31,23 @@ resource "aws_subnet" "public" {
   }
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "private_1a" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.11.0/24"
   availability_zone = "eu-central-1a"
 
   tags = {
     Name = "${local.project_name}-private-1a"
+  }
+}
+
+resource "aws_subnet" "private_1b" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.12.0/24"
+  availability_zone = "eu-central-1b"
+
+  tags = {
+    Name = "${local.project_name}-private-1b"
   }
 }
 

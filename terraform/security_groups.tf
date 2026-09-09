@@ -19,6 +19,14 @@ resource "aws_security_group" "ec2" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "SSH from my IP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["185.177.191.11/32"]
+  }
+
   egress {
     description = "Allow all outbound traffic"
     from_port   = 0

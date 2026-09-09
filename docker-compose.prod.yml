@@ -9,8 +9,7 @@ services:
       - "up"
 
   go_app:
-    build:
-      context: ./go_app
+    image: ghcr.io/bohdanberebel/portfolio-go:latest
     environment:
       PORT: 8080
       DB_HOST: ${DB_HOST}
@@ -27,8 +26,7 @@ services:
         condition: service_completed_successfully
 
   python_app:
-    build:
-      context: ./python_app
+    image: ghcr.io/bohdanberebel/portfolio-python:latest
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
@@ -43,8 +41,7 @@ services:
         condition: service_completed_successfully
 
   frontend:
-    build:
-      context: ./ts_app
+    image: ghcr.io/bohdanberebel/portfolio-frontend:latest
     ports:
       - "3000:80"
     depends_on:
