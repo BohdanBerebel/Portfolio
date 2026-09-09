@@ -20,7 +20,7 @@ resource "aws_iam_role" "github_deploy" {
           }
 
           StringLike = {
-            "token.actions.githubusercontent.com:sub" = "repo:157813971/Portfolio@1358335905:ref:refs/heads/main"
+            "token.actions.githubusercontent.com:sub" = "repo:BohdanBerebel@157813971/Portfolio@1358335905:ref:refs/heads/main"
           }
         }
       }
