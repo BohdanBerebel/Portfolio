@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"net/http"
 	"os"
 	"os/signal"
@@ -20,9 +20,21 @@ import (
 )
 
 func main() {
+	logger := slog.New(
+		slog.NewJSONHandler(
+			os.Stdout,
+			&slog.HandlerOptions{
+				Level: slog.LevelInfo,
+			},
+		),
+	)
+
+	slog.SetDefault(logger)
+
 	cfg, err := config.Load()
 	if err != nil {
-		log.Fatal(err)
+		slog.Error("failed to load configuration", "error", err)
+		os.Exit(1)
 	}
 
 	db, err := database.Connect(
@@ -34,7 +46,8 @@ func main() {
 		cfg.DBPassword,
 	)
 	if err != nil {
-		log.Fatal(err)
+		slog.Error("failed to connect to database", "error", err)
+		os.Exit(1)
 	}
 
 	userRepository := repositories.NewUserRepository(db)
@@ -118,19 +131,18 @@ func main() {
 	serverErr := make(chan error, 1)
 
 	go func() {
-		log.Printf("server started on %s", server.Addr)
-
+		slog.Info("server started", "addr", server.Addr)
 		serverErr <- server.ListenAndServe()
 	}()
 
 	select {
 	case err := <-serverErr:
 		if err != nil && err != http.ErrServerClosed {
-			log.Printf("server error: %v", err)
+			slog.Error("server error", "error", err)
 		}
 
 	case <-ctx.Done():
-		log.Println("shutdown signal received")
+		slog.Info("shutdown signal received")
 	}
 
 	shutdownCtx, cancel := context.WithTimeout(
@@ -140,12 +152,12 @@ func main() {
 	defer cancel()
 
 	if err := server.Shutdown(shutdownCtx); err != nil {
-		log.Printf("server shutdown error: %v", err)
+		slog.Error("server shutdown error", "error", err)
 	}
 
-	log.Println("closing database connection pool")
+	slog.Info("closing database connection pool")
 
 	db.Close()
 
-	log.Println("server stopped")
+	slog.Info("server stopped")
 }
