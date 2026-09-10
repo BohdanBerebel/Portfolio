@@ -56,3 +56,25 @@ resource "aws_iam_role_policy" "ec2_parameters" {
     ]
   })
 }
+
+resource "aws_iam_role_policy" "ec2_cloudwatch_logs" {
+  name = "${local.project_name}-ec2-cloudwatch-logs"
+  role = aws_iam_role.ec2_ssm.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+
+    Statement = [
+      {
+        Effect = "Allow"
+
+        Action = [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+
+        Resource = "${aws_cloudwatch_log_group.app.arn}:*"
+      }
+    ]
+  })
+}

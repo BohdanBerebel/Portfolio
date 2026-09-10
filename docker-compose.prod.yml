@@ -7,6 +7,12 @@ services:
       - "-path=/migrations"
       - "-database=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require"
       - "up"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: /portfolio/app
+        awslogs-stream: migrate
 
   go_app:
     image: ghcr.io/bohdanberebel/portfolio-go:latest
@@ -24,6 +30,12 @@ services:
     depends_on:
       migrate:
         condition: service_completed_successfully
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: /portfolio/app
+        awslogs-stream: go_app
 
   python_app:
     image: ghcr.io/bohdanberebel/portfolio-python:latest
@@ -39,6 +51,12 @@ services:
     depends_on:
       migrate:
         condition: service_completed_successfully
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: /portfolio/app
+        awslogs-stream: python_app
 
   frontend:
     image: ghcr.io/bohdanberebel/portfolio-frontend:latest
@@ -47,3 +65,9 @@ services:
     depends_on:
       - go_app
       - python_app
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: eu-central-1
+        awslogs-group: /portfolio/app
+        awslogs-stream: frontend
